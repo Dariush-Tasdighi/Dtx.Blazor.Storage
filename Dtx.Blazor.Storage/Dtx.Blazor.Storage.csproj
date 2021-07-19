@@ -5,9 +5,16 @@
 		<RootNamespace>Dtx.Blazor</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<Description>With this library, you can create, read, remove keys with value and event clear all keys from browser local storage and session storage.</Description>
+		<Description>With this library, you can create, read and remove key with its value and even clear all keys from browser local storage or session storage.</Description>
 		<RepositoryUrl>https://github.com/Dariush-Tasdighi/Dtx.Blazor.Storage</RepositoryUrl>
-		<PackageTags>Blazor LocalStorage SessionStorage</PackageTags>
+		<PackageTags>Blazor WebAssembly Browser LocalStorage SessionStorage</PackageTags>
+		<PackageProjectUrl>https://github.com/Dariush-Tasdighi/Dtx.Blazor.Storage</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>Mr. Dariush Tasdighi</Authors>
+		<Company>Iranian Experts</Company>
+		<Copyright>2021</Copyright>
+		<Version>1.0.1</Version>
+		<PackageReleaseNotes>Making some changes in classes!</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
