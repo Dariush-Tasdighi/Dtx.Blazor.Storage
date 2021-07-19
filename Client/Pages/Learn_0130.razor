@@ -1,0 +1,67 @@
+﻿@page "/learn_0130"
+@inject IJSRuntime jsRuntime
+
+<h1>
+	Learn 130
+</h1>
+
+<p>
+	Current count: @(currentCount)
+</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click Me!</button>
+
+@code
+{
+	private const string CounterKey = "counter";
+
+	protected override async Task OnInitializedAsync()
+	{
+		// **************************************************
+		// دستور ذیل کار نمی‌کند
+		// **************************************************
+		//try
+		//{
+		//	currentCount =
+		//		await jsRuntime.InvokeAsync<int>
+		//		(identifier: "sessionStorage.getItem", args: CounterKey);
+		//}
+		//catch
+		//{
+		//	currentCount = 0;
+		//}
+		// **************************************************
+
+		// **************************************************
+		try
+		{
+			string currentCountString =
+				await jsRuntime.InvokeAsync<string>
+				(identifier: "sessionStorage.getItem", args: CounterKey);
+
+			if (string.IsNullOrWhiteSpace(currentCountString))
+			{
+				currentCount = 0;
+			}
+
+			currentCount =
+				System.Convert.ToInt32(currentCountString);
+		}
+		catch
+		{
+			currentCount = 0;
+		}
+		// **************************************************
+	}
+
+	private int currentCount { get; set; }
+
+	private async Task IncrementCount()
+	{
+		currentCount++;
+
+		await jsRuntime.InvokeVoidAsync
+			(identifier: "sessionStorage.setItem",
+			args: new object[] { CounterKey, currentCount });
+	}
+}

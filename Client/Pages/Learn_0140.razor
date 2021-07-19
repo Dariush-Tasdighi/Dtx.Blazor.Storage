@@ -1,0 +1,32 @@
+﻿@page "/learn_0140"
+@inject Dtx.AspNetCore.LocalStorage localStorage
+
+<h1>
+	Learn 140
+</h1>
+
+<p>
+	Current count: @(currentCount)
+</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click Me!</button>
+
+@code
+{
+	private const string CounterKey = "counter";
+
+	protected override async Task OnInitializedAsync()
+	{
+		currentCount =
+			await localStorage.GetAsync<int>(key: CounterKey);
+	}
+
+	private int currentCount { get; set; }
+
+	private async Task IncrementCount()
+	{
+		currentCount++;
+
+		await localStorage.SetAsync<int>(key: CounterKey, value: currentCount);
+	}
+}

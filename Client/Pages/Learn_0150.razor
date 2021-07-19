@@ -1,0 +1,32 @@
+﻿@page "/learn_0150"
+@inject Dtx.AspNetCore.SessionStorage sessionStorage
+
+<h1>
+	Learn 150
+</h1>
+
+<p>
+	Current count: @(currentCount)
+</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click Me!</button>
+
+@code
+{
+	private const string CounterKey = "counter";
+
+	protected override async Task OnInitializedAsync()
+	{
+		currentCount =
+			await sessionStorage.GetAsync<int>(key: CounterKey);
+	}
+
+	private int currentCount { get; set; }
+
+	private async Task IncrementCount()
+	{
+		currentCount++;
+
+		await sessionStorage.SetAsync<int>(key: CounterKey, value: currentCount);
+	}
+}

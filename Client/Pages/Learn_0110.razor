@@ -1,0 +1,26 @@
+﻿@page "/learn_0110"
+
+<h1>
+	Learn 110
+</h1>
+
+<p>
+	Current count: @(currentCount)
+</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click Me!</button>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		currentCount = 0;
+	}
+
+	private int currentCount { get; set; }
+
+	private void IncrementCount()
+	{
+		currentCount++;
+	}
+}

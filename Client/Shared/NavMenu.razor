@@ -1,0 +1,77 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+	<a class="navbar-brand" href="">Client</a>
+	<button class="navbar-toggler" @onclick="ToggleNavMenu">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+	<ul class="nav flex-column">
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+				<span class="oi oi-home" aria-hidden="true"></span> Home
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0100">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 100
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0110">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 110
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0120">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 120
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0130">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 130
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0140">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 140
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0150">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 150
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0160">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 160
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0170">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 170
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0180">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 180
+			</NavLink>
+		</li>
+		<li class="nav-item px-3">
+			<NavLink class="nav-link" href="learn_0190">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Learn 190
+			</NavLink>
+		</li>
+	</ul>
+</div>
+
+@code {
+	private bool collapseNavMenu = true;
+
+	private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+	private void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
+}

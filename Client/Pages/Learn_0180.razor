@@ -1,0 +1,71 @@
+﻿@page "/learn_0180"
+@inject Dtx.Blazor.LocalStorage localStorage
+
+<h1>
+	Learn 180
+</h1>
+
+<hr />
+
+<h3>
+	Person
+</h3>
+
+<hr />
+
+<p>
+	Age: @(CurrentSettings?.Age)
+	<br />
+	Weight: @(CurrentSettings?.Weight)
+	<br />
+	Height: @(CurrentSettings?.Height)
+</p>
+
+<hr />
+
+<button class="btn btn-primary" @onclick="IncrementAge">Increment Age</button>
+<button class="btn btn-primary" @onclick="IncrementWeight">Increment Weight</button>
+<button class="btn btn-primary" @onclick="IncrementHeight">Increment Height</button>
+
+@code
+{
+	private const string SettingsKey = "Settings";
+
+	protected override async Task OnInitializedAsync()
+	{
+		CurrentSettings =
+			await localStorage.GetAsync<Models.Settings>(key: SettingsKey);
+
+		if (CurrentSettings == null)
+		{
+			CurrentSettings =
+				new Models.Settings();
+		}
+	}
+
+	private Models.Settings CurrentSettings { get; set; }
+
+	private async Task IncrementAge()
+	{
+		CurrentSettings.Age++;
+
+		await localStorage.SetAsync
+			<Models.Settings>(key: SettingsKey, value: CurrentSettings);
+	}
+
+	private async Task IncrementWeight()
+	{
+		CurrentSettings.Weight++;
+
+		await localStorage.SetAsync
+			<Models.Settings>(key: SettingsKey, value: CurrentSettings);
+	}
+
+	private async Task IncrementHeight()
+	{
+		CurrentSettings.Height++;
+
+		await localStorage.SetAsync
+			<Models.Settings>(key: SettingsKey, value: CurrentSettings);
+	}
+}
