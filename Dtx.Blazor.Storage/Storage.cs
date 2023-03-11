@@ -21,15 +21,15 @@ namespace Dtx.Blazor
 
 			// using Microsoft.JSInterop;
 			await JSRuntime.InvokeVoidAsync
-				(identifier: $"{ Type }Storage.setItem", args: new object[] { key, jsValue });
+				(identifier: $"{Type}Storage.setItem", args: new object[] { key, jsValue });
 		}
 		public async System.Threading.Tasks.Task<T> GetAsync<T>(string key)
 		{
 			string jsValue =
 				await JSRuntime.InvokeAsync<string>
-				(identifier: $"{ Type }Storage.getItem", args: key);
+				(identifier: $"{Type}Storage.getItem", args: key);
 
-			if (string.IsNullOrWhiteSpace(jsValue))
+			if (string.IsNullOrWhiteSpace(value: jsValue))
 			{
 				return default;
 			}
@@ -43,12 +43,13 @@ namespace Dtx.Blazor
 		public async System.Threading.Tasks.Task RemoveAsync(string key)
 		{
 			await JSRuntime.InvokeVoidAsync
-				(identifier: $"{ Type }Storage.removeItem", args: key);
+				(identifier: $"{Type}Storage.removeItem", args: key);
 		}
 
 		public async System.Threading.Tasks.Task ClearAsync()
 		{
-			await JSRuntime.InvokeVoidAsync(identifier: $"{ Type }Storage.clear");
+			await JSRuntime.InvokeVoidAsync
+				(identifier: $"{Type}Storage.clear");
 		}
 	}
 }
